@@ -16,15 +16,13 @@ public class RepositoryAdmins {
         admins.put(name,new Administrator(name));
     }
 
-    public Administrator findAdmin(String name){
-       for (Administrator administrators: admins.values()){
-            if(administrators.getPhoneNumber().getPhoneNumber().equals(phoneNumber.getPhoneNumber())){
+    public Administrator findAdmin(String name) {
+        for (Administrator administrators : admins.values()) {
+            if (administrators.getName().equals(name)) {
                 return administrators;
             }
         }
         return null;
 
-    public boolean testing(String name){
-        return admins.containsKey(name);
     }
 }

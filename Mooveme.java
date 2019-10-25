@@ -18,7 +18,7 @@ public class Mooveme {
         repositoryUser.addUser(name,phoneNumber);
     }
 
-
+/*
     public static void login(PhoneNumber phoneNumber) {
 
         if(repositoryUser.testing(phoneNumber)){
@@ -33,4 +33,6 @@ public class Mooveme {
         }
         //admin no registrado
     }
+
+ */
 }

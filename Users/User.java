@@ -17,7 +17,7 @@ public class User extends Operator{
 
     Timer tripTimer;
     private Integer ExpectedTime;
-    Asset assetUsed=null;
+    Asset assetUsed=null; //crear clase de viaje o sesion
 
     public User(PhoneNumber aPhoneNumber, String name) {
         this.phoneNumber=aPhoneNumber;

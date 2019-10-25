@@ -14,19 +14,14 @@ import Repository.RepositoryZone;
 
 public class Administrator extends Operator{
 
-    private final String name;
-    private final PhoneNumber phoneNumber;
+    private final Data data;
 
-    public Administrator(PhoneNumber phoneNumber,String name) {
-        this.name=name;
-        this.phoneNumber = phoneNumber;
+    public Administrator(Data data) {
+        this.data=data;
     }
 
     public String getName() {
-        return name;
-    }
-       public PhoneNumber getPhoneNumber(){
-        return phoneNumber;
+        return data.getName();
     }
 
 
