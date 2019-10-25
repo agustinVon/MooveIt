@@ -21,7 +21,7 @@ public class AssetParking {
         return assetToOccupy;
     }
 
-    public double returnAsset(Asset assetUsed, int points) {
-        return zone.calculateFee(assetUsed,points);
+    public double returnAsset(Travel travel, int points) {
+        return zone.calculateFee(travel.getAsset(),points);
     }
 }

@@ -12,7 +12,7 @@ import Repository.RepositoryAdmins;
 import Repository.RepositoryUser;
 import Repository.RepositoryZone;
 
-public class Administrator extends Operator{
+public class Administrator extends Operators{
 
     private final Data data;
 
@@ -39,8 +39,8 @@ public class Administrator extends Operator{
         }
     }
 
-    public void registerAdmin(RepositoryAdmins repositoryAdmins,String name){
-        repositoryAdmins.addAdmin(name);
+    public void registerAdmin(RepositoryAdmins repositoryAdmins,Data data){
+        repositoryAdmins.add(data);
     }
 
     public void buyBatch(AssetType assetType, int cuantity, Zone zone, ListAssetBachCodes listBachCodes, int precioDeAlquilerDelLote){

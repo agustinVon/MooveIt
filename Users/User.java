@@ -7,21 +7,18 @@ import Exeptions.UserIsNotInATripException;
 import java.util.ArrayList;
 
 
-public class User extends Operator{
+public class User extends Operators{
 
 
-    private final PhoneNumber phoneNumber;
-    private final String name;
+    private final Data data;
     private boolean isLocked=false;
     int points;
 
-    Timer tripTimer;
-    private Integer ExpectedTime;
+    Travel actualTravel=null;
     Asset assetUsed=null; //crear clase de viaje o sesion
 
-    public User(PhoneNumber aPhoneNumber, String name) {
-        this.phoneNumber=aPhoneNumber;
-        this.name=name;
+    public User(Data data) {
+        this.data =data;
     }
 
     public void userLocking(boolean lockUser) throws UserIsAlreadyLockedExeption {
@@ -29,29 +26,28 @@ public class User extends Operator{
     }
 
     public PhoneNumber getPhoneNumber(){
-        return phoneNumber;
+        return data.getPhoneNumber();
     }
 
     public String getName() {
-        return name;
+        return data.getName();
     }
 
     public boolean getLock(){ //for testing
         return isLocked;
     }
 
-    public void rentAsset(AssetParking assetParking, AssetType assetType,Integer ExpectedTime){
-        assetUsed=assetParking.rentAsset(assetType);
-        tripTimer=new Timer();
-        this.ExpectedTime=ExpectedTime;
+    public void rentAsset(AssetParking assetParking, AssetType assetType,long ExpectedTime){
+        Travel travel=new Travel(assetParking.rentAsset(assetType),new Timer(ExpectedTime));
     }
 
     public double returnAsset(AssetParking assetParking)throws UserIsNotInATripException {
-        if(assetUsed!=null){
+        if(actualTravel!=null){
             //boolean returnredAtRightTime=tripTimer.compareTime(ExpectedTime);
-            double totalFee = assetParking.returnAsset(assetUsed,points);
+            double totalFee = assetParking.returnAsset(actualTravel,points);
+            //assetParking.ganarPuntos(actualTravel,)
             //TODO add points when asset is returned
-            assetUsed=null;
+            actualTravel=null;
             return  totalFee;
         }
         else{

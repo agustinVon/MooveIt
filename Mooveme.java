@@ -1,6 +1,5 @@
 import Repository.RepositoryAdmins;
 import Repository.RepositoryUser;
-import Users.Operator;
 import Users.PhoneNumber;
 
 public class Mooveme {
