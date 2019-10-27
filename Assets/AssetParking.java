@@ -18,12 +18,10 @@ public class AssetParking {
             assetTypeDoesNotExistInSpecifiedZone.printStackTrace();
             //TODO throw toast to inform that asset does not exist
         }
-        finally {
-            return assetToOccupy;
-        }
+        return assetToOccupy;
     }
 
-    public double returnAsset(Asset assetUsed, int points) {
-        return zone.calculateFee(assetUsed,points);
+    public double returnAsset(Travel travel, int points) {
+        return zone.calculateFee(travel.getAsset(),points);
     }
 }

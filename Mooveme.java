@@ -1,6 +1,5 @@
 import Repository.RepositoryAdmins;
 import Repository.RepositoryUser;
-import Users.Operator;
 import Users.PhoneNumber;
 
 public class Mooveme {
@@ -18,7 +17,7 @@ public class Mooveme {
         repositoryUser.addUser(name,phoneNumber);
     }
 
-
+/*
     public static void login(PhoneNumber phoneNumber) {
 
         if(repositoryUser.testing(phoneNumber)){
@@ -33,4 +32,6 @@ public class Mooveme {
         }
         //admin no registrado
     }
+
+ */
 }

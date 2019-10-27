@@ -12,21 +12,16 @@ import Repository.RepositoryAdmins;
 import Repository.RepositoryUser;
 import Repository.RepositoryZone;
 
-public class Administrator extends Operator{
+public class Administrator extends Operators{
 
-    private final String name;
-    private final PhoneNumber phoneNumber;
+    private final Data data;
 
-    public Administrator(PhoneNumber phoneNumber,String name) {
-        this.name=name;
-        this.phoneNumber = phoneNumber;
+    public Administrator(Data data) {
+        this.data=data;
     }
 
     public String getName() {
-        return name;
-    }
-       public PhoneNumber getPhoneNumber(){
-        return phoneNumber;
+        return data.getName();
     }
 
 
@@ -44,8 +39,8 @@ public class Administrator extends Operator{
         }
     }
 
-    public void registerAdmin(RepositoryAdmins repositoryAdmins,String name){
-        repositoryAdmins.addAdmin(name);
+    public void registerAdmin(RepositoryAdmins repositoryAdmins,Data data){
+        repositoryAdmins.add(data);
     }
 
     public void buyBatch(AssetType assetType, int cuantity, Zone zone, ListAssetBachCodes listBachCodes, int precioDeAlquilerDelLote){

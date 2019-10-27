@@ -1,10 +1,12 @@
 package Repository;
 
 import Users.Administrator;
+import Users.Data;
+import Users.Operators;
 
 import java.util.HashMap;
 
-public class RepositoryAdmins {
+public class RepositoryAdmins implements OperatorsRepositry{
 
     private HashMap<String, Administrator> admins;
 
@@ -12,19 +14,29 @@ public class RepositoryAdmins {
         admins=new HashMap<>();
     }
 
-    public void addAdmin(String name){
-        admins.put(name,new Administrator(name));
-    }
-
-    public Administrator findAdmin(String name){
-       for (Administrator administrators: admins.values()){
-            if(administrators.getPhoneNumber().getPhoneNumber().equals(phoneNumber.getPhoneNumber())){
+    public Administrator findAdmin(String name) {
+        for (Administrator administrators : admins.values()) {
+            if (administrators.getName().equals(name)) {
                 return administrators;
             }
         }
         return null;
 
-    public boolean testing(String name){
-        return admins.containsKey(name);
     }
+
+    @Override
+    public void add(Data data) {
+        admins.put(data.getName(),new Administrator(data));
+    }
+
+    @Override
+    public Operators find(Data data) {
+        for (Administrator administrators : admins.values()) {
+            if (administrators.getName().equals(data.getName())) {
+                return administrators;
+            }
+        }
+        return null;
+    }
+
 }
