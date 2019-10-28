@@ -2,15 +2,15 @@ package Assets;
 
 public class AssetType {
 
-    private final int point;
+    private final Integer point;
     private final String name;
 
-    public AssetType(int pointsPerMinute, String name){
+    public AssetType(Integer pointsPerMinute, String name){
         this.point=pointsPerMinute;
         this.name=name;
     }
 
-    public int getPoint() {
+    public Integer getPoint() {
         return point;
     }
 }

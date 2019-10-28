@@ -3,8 +3,7 @@ package Users;
 import Assets.*;
 import Exeptions.UserIsAlreadyLockedExeption;
 import Exeptions.UserIsNotInATripException;
-
-import java.util.ArrayList;
+import Points.PointsStoredInUserForEachZone;
 
 
 public class User extends Operators{
@@ -12,12 +11,13 @@ public class User extends Operators{
 
     private final Data data;
     private boolean isLocked=false;
-    int points;
+    PointsStoredInUserForEachZone points;
 
     Travel actualTravel=null;
     Asset assetUsed=null; //crear clase de viaje o sesion
 
     public User(Data data) {
+        this.points=new PointsStoredInUserForEachZone();
         this.data =data;
     }
 
@@ -37,15 +37,15 @@ public class User extends Operators{
         return isLocked;
     }
 
-    public void rentAsset(AssetParking assetParking, AssetType assetType,long ExpectedTime){
-        Travel travel=new Travel(assetParking.rentAsset(assetType),new Timer(ExpectedTime));
+    public void rentAsset(AssetParking assetParking, AssetType assetType,long expectedTime){
+        Travel travel=new Travel(assetParking.rentAsset(assetType),new Timer(System.nanoTime()),expectedTime);
     }
 
     public double returnAsset(AssetParking assetParking)throws UserIsNotInATripException {
         if(actualTravel!=null){
             //boolean returnredAtRightTime=tripTimer.compareTime(ExpectedTime);
-            double totalFee = assetParking.returnAsset(actualTravel,points);
-            //assetParking.ganarPuntos(actualTravel,)
+            double totalFee = assetParking.returnAsset(actualTravel,points.getPoints(assetParking.getZone()));
+            points.add(assetParking.ganarPuntos(actualTravel,data,points.getPoints(assetParking.getZone())),assetParking.getZone());
             //TODO add points when asset is returned
             actualTravel=null;
             return  totalFee;

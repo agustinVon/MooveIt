@@ -1,6 +1,7 @@
 package Assets;
 
 import Exeptions.AssetTypeDoesNotExistInSpecifiedZone;
+import Users.Data;
 
 public class AssetParking {
 
@@ -23,5 +24,13 @@ public class AssetParking {
 
     public double returnAsset(Travel travel, int points) {
         return zone.calculateFee(travel.getAsset(),points);
+    }
+
+    public Integer ganarPuntos(Travel actualTravel, Data data, Integer points) {
+        return zone.actualizarPuntos(actualTravel,data,points);
+    }
+
+    public Zone getZone() {
+        return zone;
     }
 }
