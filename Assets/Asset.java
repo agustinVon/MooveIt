@@ -1,4 +1,4 @@
-package Assets;
+package com.spacetech.moovme.clases;
 
 public class Asset {
 
@@ -9,6 +9,7 @@ public class Asset {
     public Asset(AssetType assetType, int precioDeAlquilerDelLote){
         this.assetType=assetType;
         this.price=precioDeAlquilerDelLote;
+        assetIsOcupied=false;
     }
 
     public void occupy(){

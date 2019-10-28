@@ -1,6 +1,6 @@
-package Users;
+package com.spacetech.moovme.clases;
 
 public abstract class Operator {
 
-    abstract String getName();
+    public abstract String getName();
 }

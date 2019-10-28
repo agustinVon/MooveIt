@@ -1,7 +1,4 @@
-package Exeptions;
+package com.spacetech.moovme.clases;
 
-public class AssetTypeDoesNotExistInSpecifiedZone extends Exception {
-    public AssetTypeDoesNotExistInSpecifiedZone(){
-        super("El tipo de asset selecionado no existe en la zona");
-    }
+class AssetTypeDoesNotExistInSpecifiedZone extends Exception {
 }

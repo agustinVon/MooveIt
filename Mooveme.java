@@ -1,37 +1,71 @@
-import Repository.RepositoryAdmins;
-import Repository.RepositoryUser;
-import Users.PhoneNumber;
+package com.spacetech.moovme;
+
+import com.spacetech.moovme.Repository.RepositoryAdmin;
+import com.spacetech.moovme.Repository.RepositoryAsset;
+import com.spacetech.moovme.Repository.RepositoryUser;
+import com.spacetech.moovme.clases.PhoneNumber;
+import com.spacetech.moovme.Repository.RepositoryZone;
+import com.spacetech.moovme.clases.User;
 
 public class Mooveme {
 
     private static RepositoryUser repositoryUser;
-    private static RepositoryAdmins repositoryAdmins;
-    private static Operator activeuser;
+    private static RepositoryAdmin repositoryAdmin;
+    private static RepositoryZone repositoryZone;
+    private  static RepositoryAsset repositoryAsset;
+    private static User activeuser;
+    private static String name;
 
-    public Mooveme(RepositoryUser repositoryUser, RepositoryAdmins repositoryAdmins){
+    public Mooveme(RepositoryUser repositoryUser, RepositoryAdmin repositoryAdmin, RepositoryZone repositoryZone, RepositoryAsset repositoryAsset){
         Mooveme.repositoryUser = repositoryUser;
-        Mooveme.repositoryAdmins=repositoryAdmins;
+        Mooveme.repositoryAdmin = repositoryAdmin;
+        Mooveme.repositoryZone = repositoryZone;
+        Mooveme.repositoryAsset = repositoryAsset;
     }
 
     public static void register(String name, PhoneNumber phoneNumber){
         repositoryUser.addUser(name,phoneNumber);
     }
 
-/*
-    public static void login(PhoneNumber phoneNumber) {
-
-        if(repositoryUser.testing(phoneNumber)){
-            activeuser=repositoryUser.findUser(phoneNumber);
-        }
-        //usuario no registrado
+    public static  RepositoryAsset getRepositoryAsset(){
+        return repositoryAsset;
     }
 
-    public static void loginAdmin(String name){
-        if(repositoryAdmins.testing(name)){
-            activeuser=repositoryAdmins.findAdmin(name);
-        }
-        //admin no registrado
+    public static RepositoryUser getRepositoryUser() {
+        return repositoryUser;
     }
 
- */
+    public static RepositoryZone getRepositoryZone() {
+        return repositoryZone;
+    }
+
+    public void setName(String string){
+        name = string;
+    }
+    public static String getName(){
+        return name;
+    }
+
+    public static boolean login(PhoneNumber phoneNumber) {
+
+        return repositoryUser.testing(phoneNumber);
+       // activeuser =  repositoryUser.findUser(phoneNumber);
+    }
+
+    public static void registeradmin(String name) {
+        repositoryAdmin.addAdmin(name);
+    }
+
+    public static boolean loginadmin(String name){
+        if(repositoryAdmin.findAdmin(name) == null){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public static RepositoryAdmin getRepositoryAdmin(){
+        return repositoryAdmin;
+    }
 }

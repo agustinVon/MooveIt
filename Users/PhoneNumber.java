@@ -1,10 +1,14 @@
-package Users;
+package com.spacetech.moovme.clases;
 
 public class PhoneNumber {
 
-    private final int number;
+    private final String number;
 
-    public PhoneNumber(int number){
+    public PhoneNumber(String number){
         this.number=number;
+    }
+
+    public String getPhoneNumber(){
+        return number;
     }
 }

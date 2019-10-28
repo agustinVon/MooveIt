@@ -1,10 +1,6 @@
-package Assets;
+package com.spacetech.moovme.clases;
 
-import Exeptions.AssetTypeDoesNotExistInSpecifiedZone;
-import Points.NameAndScore;
-import Points.PointTable;
-import Repository.RepositoryDiscount;
-import Users.Data;
+import com.spacetech.moovme.Repository.RepositoryDiscount;
 
 import java.util.ArrayList;
 
@@ -13,15 +9,10 @@ public class Zone {
     private final ArrayList<AssetBatch> assetList=new ArrayList<AssetBatch>();
     private final ArrayList<Asset> totalAssets=new ArrayList<>();
     private final Tarifario tarifario=new Tarifario();
-    private final PointTable pointTable;//create in construtor or leave it like that? implement after knowing persistance
-    private PointCounter pointCounter;
     private RepositoryDiscount repositoryDiscount=new RepositoryDiscount();
 
-    public Zone(String name,PointTable pointTable){
-
+    public Zone(String name){
         this.name=name;
-        this.pointTable=pointTable;
-        this.pointCounter=new PointCounter();
     }
 
     public void addNewBach(AssetBatch assetBatch) {
@@ -29,6 +20,9 @@ public class Zone {
         for (Asset asset: assetBatch.getAssetList()) {
             totalAssets.add(asset);
         }
+    }
+    public String getName(){
+        return name;
     }
 
     public Asset getAssetwithDesignatedType(AssetType assetType) throws AssetTypeDoesNotExistInSpecifiedZone {
@@ -59,24 +53,4 @@ public class Zone {
     public ArrayList<Asset> getTotalAssets() {
         return totalAssets;
     }
-
-    public Integer actualizarPuntos(Travel actualTravel, Data data, Integer points) {
-        Integer aquiredPoints=points+pointCounter.calculateAquiredPoints(actualTravel);
-        pointTable.updateScore(aquiredPoints,data);
-        return aquiredPoints;
-    }
-
-    /*
-    public ArrayList<NameAndScore> getTop10Leaders(){
-        //TODO return top 10Leaders
-        //this method can be called from user
-    }
-
-    public void giveTopUsersMonthDiscount(){
-        //TODO this method is called from admin
-        //then it tells user to have a discount
-        //user.givemonthDiscount()
-        //this activates a boolean in user that determinates if he has a 50 discount in next purchase
-    }
-    */
 }

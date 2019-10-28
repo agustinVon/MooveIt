@@ -1,16 +1,19 @@
-package Assets;
+package com.spacetech.moovme.clases;
 
 public class AssetType {
 
-    private final Integer point;
+    private final int point;
     private final String name;
 
-    public AssetType(Integer pointsPerMinute, String name){
+    public AssetType(int pointsPerMinute, String name){
         this.point=pointsPerMinute;
         this.name=name;
     }
+    public String getName(){
+        return name;
+    }
 
-    public Integer getPoint() {
+    public int getPoint() {
         return point;
     }
 }

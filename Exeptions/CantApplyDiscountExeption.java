@@ -1,7 +1,4 @@
-package Exeptions;
+package com.spacetech.moovme.clases;
 
-public class CantApplyDiscountExeption extends Exception {
-    public CantApplyDiscountExeption(){
-        super("El descuento no es aplicable");
-    }
+class CantApplyDiscountExeption extends Exception {
 }

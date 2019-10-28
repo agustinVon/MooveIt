@@ -1,35 +1,33 @@
-package Users;
+package com.spacetech.moovme.clases;
+
+import android.content.Context;
+
+import com.spacetech.moovme.Repository.RepositoryAdmin;
+import com.spacetech.moovme.Repository.RepositoryAsset;
+import com.spacetech.moovme.Repository.RepositoryUser;
+import com.spacetech.moovme.Repository.RepositoryZone;
 
 
-import Assets.AssetBatch;
-import Assets.AssetType;
-import Assets.Zone;
-import Exeptions.UserIsAlreadyLockedExeption;
-import Exeptions.ZoneAlreadyExistsException;
-import Exeptions.ZoneDoesNotExistException;
-import Repository.ListAssetBachCodes;
-import Repository.RepositoryAdmins;
-import Repository.RepositoryUser;
-import Repository.RepositoryZone;
+public class Administrator extends Operator {
 
-public class Administrator extends Operators{
+    private final String name;
 
-    private final Data data;
-
-    public Administrator(Data data) {
-        this.data=data;
+    public Administrator(String name) {
+        this.name=name;
     }
 
     public String getName() {
-        return data.getName();
+        return name;
     }
-
-
 
     public void setUserLock(RepositoryUser userRepo, PhoneNumber aPhoneNumber, boolean lockUser){
         User userToBlock = userRepo.findUser(aPhoneNumber);
+        /*
         try{
+
+         */
             userToBlock.userLocking(lockUser);
+            /*
         } catch (UserIsAlreadyLockedExeption userIsAlreadyLockedExeption) {
             if(userToBlock.getLock()==lockUser){
                 userIsAlreadyLockedExeption.printStackTrace();
@@ -37,22 +35,30 @@ public class Administrator extends Operators{
             }
 
         }
+
+             */
     }
 
-    public void registerAdmin(RepositoryAdmins repositoryAdmins,Data data){
-        repositoryAdmins.add(data);
+    public void registerAdmin(RepositoryAdmin repositoryAdmins,String name){
+        repositoryAdmins.addAdmin(name);
+    }
+
+    public void createNewZone(RepositoryZone repositoryZone, int zonepoints, String name, Context ctx) throws ZoneAlreadyExistsException {
+        repositoryZone.add(zonepoints,name, ctx);
+    }
+
+    public void deleteZone(RepositoryZone repositoryZone,String name) throws ZoneDoesNotExistException {
+        repositoryZone.delete(name);
     }
 
     public void buyBatch(AssetType assetType, int cuantity, Zone zone, ListAssetBachCodes listBachCodes, int precioDeAlquilerDelLote){
         AssetBatch assetBatch =new AssetBatch(assetType,cuantity,listBachCodes.createNewCode(),precioDeAlquilerDelLote);
         zone.addNewBach(assetBatch);
     }
-
-    public void createNewZone(RepositoryZone repositoryZone, int zonepoints, String name) throws ZoneAlreadyExistsException {
-        repositoryZone.add(zonepoints,name);
+    public void createAssetType(String name, int point, RepositoryAsset repositoryAsset){
+        repositoryAsset.addAssetType(new AssetType(point,name));
     }
+    //add new administrator to the abm
 
-    public void deleteZone(RepositoryZone repositoryZone,String name) throws ZoneDoesNotExistException {
-        repositoryZone.delete(name);
-    }
+
 }

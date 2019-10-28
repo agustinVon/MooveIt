@@ -1,7 +1,4 @@
-package Exeptions;
+package com.spacetech.moovme.clases;
 
 public class ZoneDoesNotExistException extends Exception {
-    public ZoneDoesNotExistException(){
-        super("Zone does not exist");
-    }
 }
