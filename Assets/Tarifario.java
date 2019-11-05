@@ -1,6 +1,4 @@
-package Assets;
-
-import Exeptions.CantApplyDiscountExeption;
+package com.spacetech.moovme.clases;
 
 public class Tarifario {
 

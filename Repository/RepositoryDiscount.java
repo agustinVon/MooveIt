@@ -1,7 +1,8 @@
-package Repository;
+package com.spacetech.moovme.Repository;
 
-import Assets.AssetType;
-import Assets.Discount;
+
+import com.spacetech.moovme.clases.AssetType;
+import com.spacetech.moovme.clases.Discount;
 
 import java.util.ArrayList;
 import java.util.HashMap;

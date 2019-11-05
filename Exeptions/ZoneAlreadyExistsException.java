@@ -1,7 +1,4 @@
-package Exeptions;
+package com.spacetech.moovme.clases;
 
-public class ZoneAlreadyExistsException extends Exception {
-    public ZoneAlreadyExistsException(){
-        super("Zone already exists");
-    }
+public class ZoneAlreadyExistsException extends Throwable {
 }

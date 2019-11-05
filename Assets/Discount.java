@@ -1,6 +1,5 @@
-package Assets;
+package com.spacetech.moovme.clases;
 
-import Exeptions.CantApplyDiscountExeption;
 
 public class Discount {
 
